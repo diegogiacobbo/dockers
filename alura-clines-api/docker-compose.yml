@@ -1,0 +1,26 @@
+version: '3'
+services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: clines
+
+    ports:
+      - 5432:5432
+    networks:
+      - production-network
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8099:8080
+    networks:
+      - production-network
+
+networks:
+  production-network:
+    driver: bridge

@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: alura
+    ports:
+      - 3307:3306
+    networks:
+      - production-network
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8098:8080
+    networks:
+      - production-network
+
+networks:
+  production-network:
+    driver: bridge
